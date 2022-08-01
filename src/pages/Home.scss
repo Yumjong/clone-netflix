@@ -1,4 +1,27 @@
 .home{
     background-color: black;
+}
+
+.homeLoding{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
+}
+
+
+.slide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .movieSlide{
+    width: 88%;
+    
+    .slideTitle{
+        color: white;
+        margin-top:100px;
+    }
+}
 }

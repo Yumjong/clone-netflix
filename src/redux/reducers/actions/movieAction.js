@@ -16,17 +16,15 @@ function getMovie() {
       `/upcoming?api_key=${API_KEY}&language=en-US&page=1`
     );
 
-    let [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
-      popularMovieApi,
-      topRatedApi,
-      upcomingApi,
-    ]);
+    let [popularMovies, topRatedMovies, upcomingMovies, loading] =
+      await Promise.all([popularMovieApi, topRatedApi, upcomingApi, false]);
 
     dispatch(
       getMovieActions.getMovie({
         popularMovies: popularMovies.data,
         topRatedMovies: topRatedMovies.data,
         upcomingMovies: upcomingMovies.data,
+        loading: loading.data,
       })
     );
 
