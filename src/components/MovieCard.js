@@ -2,12 +2,19 @@ import React from 'react';
 import './MovieCard.scss';
 import Badge from 'react-bootstrap/Badge';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const MovieCard = ({ item }) => {
   const { genreList } = useSelector((state) => state.getMovie);
+  const navigate = useNavigate();
+
+  const moveToDetail = () => {
+    navigate(`/movie/${item.id}`);
+  };
 
   return (
     <div
+      onClick={moveToDetail}
       className="movieCard"
       style={{
         margin: 'auto',
@@ -28,7 +35,7 @@ const MovieCard = ({ item }) => {
         </div>
         <div>
           <span>{item.vote_average}</span>
-          <div>{item.adult ? '청불' : 'under 18'}</div>
+          <div>{item.adult ? 'R-rated' : 'G-rated'}</div>
         </div>
       </div>
     </div>

@@ -1,0 +1,79 @@
+.movieDetail{
+    background-color: black;
+
+    .detailRow{
+        padding: 150px 0;
+
+        
+    .detailCol1{
+        display: flex;
+        justify-content: flex-end;
+
+        img{
+            width: 30rem;
+        }
+    }
+
+    .detailCol2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        
+        .detailTitle{
+            font-size: 50px;
+        }
+
+        .detailTag{
+            font-size: 30px;
+        }
+
+        .detailGenres{
+            font-size: 20px;
+
+            .detailBadge{
+                margin-right: 10px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .moreInfo{
+            display: flex;
+
+            .infoBox{
+                display: flex;
+                margin-right: 20px;
+
+                .starIcon{
+                    color: yellow;
+                    margin: 4px 5px 0 0; 
+                }
+
+                .peopleIcon{
+                    color:rgb(183, 95, 183);
+                    font-size: 24px;
+                    margin: 0 5px 0 0;
+                }
+
+                .adultIcon{
+                    color: rgb(205, 2, 2);
+                    font-size: 18px;
+                    margin: 3px 5px 0 0;
+                }
+            }
+        }
+
+        .underBar{
+            width: 90%;
+            margin: 40px 0 20px 0;
+            border: 1px solid white;
+        }
+
+        .overview{
+            width: 90%;
+        }
+    }
+    }
+
+
+}

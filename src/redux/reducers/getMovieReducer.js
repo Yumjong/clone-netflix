@@ -20,9 +20,6 @@ const getMoviesSlice = createSlice({
       state.loading = action.payload.loading;
       state.genreList = action.payload.genreList;
     },
-    getMovieDetail(state, action) {
-      state.MovieDetail = action.payload.data;
-    },
   },
 });
 
