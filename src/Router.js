@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import MovieDetail from './pages/MovieDetail';
+import Footer from './components/Footer';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

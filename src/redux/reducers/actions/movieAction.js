@@ -5,19 +5,29 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 function getMovie() {
   return async (dispatch, getState) => {
     const popularMovieApi = api.get(
-      `/popular?api_key=${API_KEY}&language=en-US&page=1`
+      `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
     );
 
     const topRatedApi = api.get(
-      `/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+      `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
     );
 
     const upcomingApi = api.get(
-      `/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+      `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
     );
 
-    let [popularMovies, topRatedMovies, upcomingMovies, loading] =
-      await Promise.all([popularMovieApi, topRatedApi, upcomingApi, false]);
+    const genreApi = api.get(
+      `/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    );
+
+    let [popularMovies, topRatedMovies, upcomingMovies, loading, genreList] =
+      await Promise.all([
+        popularMovieApi,
+        topRatedApi,
+        upcomingApi,
+        false,
+        genreApi,
+      ]);
 
     dispatch(
       getMovieActions.getMovie({
@@ -25,6 +35,7 @@ function getMovie() {
         topRatedMovies: topRatedMovies.data,
         upcomingMovies: upcomingMovies.data,
         loading: loading.data,
+        genreList: genreList.data.genres,
       })
     );
 
