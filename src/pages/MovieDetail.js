@@ -8,6 +8,7 @@ import './MovieDetail.scss';
 import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 import { IoIosPeople } from '@react-icons/all-files/io/IoIosPeople';
 import { BsFillPersonCheckFill } from '@react-icons/all-files/bs/BsFillPersonCheckFill';
+import { RiMovie2Fill } from '@react-icons/all-files/ri/RiMovie2Fill';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -40,31 +41,66 @@ const MovieDetail = () => {
             />
           </Col>
           <Col className="detailCol2">
-            <div className="detailTitle">{movie?.title}</div>
-            <div className="detailTag">{movie?.tagline}</div>
-            <div className="detailGenres">
-              {movie?.genres.map((item, i) => (
-                <Badge className="detailBadge" bg="danger" key={i}>
-                  {item.name}
-                </Badge>
-              ))}
+            <div className="detailTop">
+              <div className="detailTitle">{movie?.title}</div>
+              <div className="detailTag">{movie?.tagline}</div>
+              <div className="detailGenres">
+                {movie?.genres.map((item, i) => (
+                  <Badge className="detailBadge" bg="danger" key={i}>
+                    {item.name}
+                  </Badge>
+                ))}
+              </div>
+              <div className="moreInfo">
+                <div className="infoBox">
+                  <AiFillStar className="starIcon" />
+                  <div>{movie?.vote_average}</div>
+                </div>
+                <div className="infoBox">
+                  <IoIosPeople className="peopleIcon" />
+                  <div>{movie?.popularity}</div>
+                </div>
+                <div className="infoBox">
+                  <BsFillPersonCheckFill className="adultIcon" />
+                  <div>{movie?.adult ? 'R-rated' : 'G-rated'}</div>
+                </div>
+              </div>
             </div>
-            <div className="moreInfo">
-              <div className="infoBox">
-                <AiFillStar className="starIcon" />
-                <div>{movie?.vote_average}</div>
-              </div>
-              <div className="infoBox">
-                <IoIosPeople className="peopleIcon" />
-                <div>{movie?.popularity}</div>
-              </div>
-              <div className="infoBox">
-                <BsFillPersonCheckFill className="adultIcon" />
-                <div>{movie?.adult ? 'R-rated' : 'G-rated'}</div>
-              </div>
-            </div>
-            <div className="underBar"></div>
+
+            <div className="underBar" />
             <div className="overview">{movie?.overview}</div>
+            <div className="underBar" />
+            <div className="addInfo">
+              <div className="addInfoBox">
+                <Badge bg="danger" className="addInfoBadge">
+                  Budget
+                </Badge>
+                <span>${movie?.budget}</span>
+              </div>
+              <div className="addInfoBox">
+                <Badge bg="danger" className="addInfoBadge">
+                  Revenue
+                </Badge>
+                <span>${movie?.revenue}</span>
+              </div>
+              <div className="addInfoBox">
+                <Badge bg="danger" className="addInfoBadge">
+                  Release Date
+                </Badge>
+                <span>${movie?.release_date}</span>
+              </div>
+              <div className="addInfoBox">
+                <Badge bg="danger" className="addInfoBadge">
+                  Time
+                </Badge>
+                <span>{movie?.runtime}</span>
+              </div>
+            </div>
+            <div className="underBar" />
+            <div className="trailer">
+              <RiMovie2Fill className="trailerIcon" />
+              <div> Watch Trailer</div>
+            </div>
           </Col>
         </Row>
       </Container>
