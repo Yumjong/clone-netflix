@@ -1,0 +1,42 @@
+.review{
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    
+    .reviewBox{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.2rem;
+
+        .reviewDate{
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .underBar{
+            border: 1px solid white;
+        }
+    }
+}
+
+.reviewBtn{
+    font-size: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    border: 0px;
+    margin:0 1rem;
+    padding: 0.3rem 0.8rem;
+    color: white;
+    background-color: #DC3545;
+}
+
+.relatedBtn{
+    font-size: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    border: 0px;
+    padding: 0.3rem 0.8rem;
+    color: rgb(217, 217, 217);
+    background-color: gray;
+}

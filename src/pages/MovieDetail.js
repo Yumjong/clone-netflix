@@ -9,11 +9,15 @@ import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 import { IoIosPeople } from '@react-icons/all-files/io/IoIosPeople';
 import { BsFillPersonCheckFill } from '@react-icons/all-files/bs/BsFillPersonCheckFill';
 import { RiMovie2Fill } from '@react-icons/all-files/ri/RiMovie2Fill';
+import Review from './Review';
+import RelatedMovie from './RelatedMovie';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
+  const [reviewBtn, setReviewBtn] = useState(true);
+
   let { id } = useParams();
 
   const getMovieDetail = async () => {
@@ -25,11 +29,11 @@ const MovieDetail = () => {
     setMovie(detailMovie.data);
   };
 
+  console.log('btnTest', reviewBtn);
+
   useEffect(() => {
     getMovieDetail();
   }, []);
-
-  console.log('detail', movie);
 
   return (
     <div className="movieDetail">
@@ -103,6 +107,11 @@ const MovieDetail = () => {
             </div>
           </Col>
         </Row>
+        {reviewBtn ? (
+          <Review setReviewBtn={setReviewBtn} />
+        ) : (
+          <RelatedMovie setReviewBtn={setReviewBtn} />
+        )}
       </Container>
     </div>
   );
