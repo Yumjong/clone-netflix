@@ -14,7 +14,6 @@ const Review = ({ setReviewBtn }) => {
     const reviewApi = api.get(
       `/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     );
-
     let [reviews] = await Promise.all([reviewApi]);
     setReview(reviews.data.results);
   };

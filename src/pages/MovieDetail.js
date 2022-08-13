@@ -41,7 +41,7 @@ const MovieDetail = () => {
         <Row className="detailRow">
           <Col className="detailCol1">
             <img
-              src={` https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie?.poster_path}`}
+              src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie?.poster_path}`}
             />
           </Col>
           <Col className="detailCol2">
