@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import api from '../redux/reducers/api';
 import './RelatedMovie.scss';
@@ -10,8 +11,8 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const RelatedMovie = ({ setReviewBtn }) => {
   const { genreList } = useSelector((state) => state.getMovie);
-
-  console.log('genreList', genreList);
+  const navigate = useNavigate();
+  console.log('adfasdf', genreList);
 
   const [related, setRelate] = useState();
   let { id } = useParams();
@@ -24,11 +25,11 @@ const RelatedMovie = ({ setReviewBtn }) => {
     setRelate(related.data.results);
   };
 
-  console.log('afdasdf', related);
-
   useEffect(() => {
     getRelated();
   }, []);
+
+  console.log('related', related);
 
   const handleReviewBtn = () => {
     setReviewBtn(true);
@@ -51,6 +52,10 @@ const RelatedMovie = ({ setReviewBtn }) => {
         {related?.map((item, i) => (
           <Col className="relateBox" lg={6} key={i}>
             <div
+              onClick={(e) => {
+                navigate(`/movie/${item.id}`);
+                window.location.reload();
+              }}
               className="relatedImg"
               style={{
                 backgroundImage:
@@ -64,7 +69,8 @@ const RelatedMovie = ({ setReviewBtn }) => {
                 <div>
                   {item.genre_ids.map((id, i) => (
                     <Badge bg="danger" key={i} className="relatedGenre">
-                      {genreList?.find((item) => item.id === id).name}
+                      {genreList &&
+                        genreList.find((item) => item.id === id)?.name}
                     </Badge>
                   ))}
                 </div>

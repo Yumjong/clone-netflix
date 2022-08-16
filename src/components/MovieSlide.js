@@ -19,6 +19,7 @@ const responsive = {
 };
 
 const MovieSlide = ({ movies }) => {
+  console.log('moviesSlide', movies);
   return (
     <Carousel responsive={responsive} focusOnSelect={false}>
       {movies.results.map((item, i) => (

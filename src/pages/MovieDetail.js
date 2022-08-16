@@ -9,14 +9,18 @@ import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 import { IoIosPeople } from '@react-icons/all-files/io/IoIosPeople';
 import { BsFillPersonCheckFill } from '@react-icons/all-files/bs/BsFillPersonCheckFill';
 import { RiMovie2Fill } from '@react-icons/all-files/ri/RiMovie2Fill';
+
 import Review from './Review';
 import RelatedMovie from './RelatedMovie';
+import TrailerModal from '../components/TrailerModal';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
   const [reviewBtn, setReviewBtn] = useState(true);
+
+  const [show, setShow] = useState(false);
 
   let { id } = useParams();
 
@@ -28,8 +32,6 @@ const MovieDetail = () => {
     let [detailMovie] = await Promise.all([detailMovieApi]);
     setMovie(detailMovie.data);
   };
-
-  console.log('btnTest', reviewBtn);
 
   useEffect(() => {
     getMovieDetail();
@@ -101,10 +103,11 @@ const MovieDetail = () => {
               </div>
             </div>
             <div className="underBar" />
-            <div className="trailer">
+            <div className="trailer" onClick={() => setShow(true)}>
               <RiMovie2Fill className="trailerIcon" />
               <div> Watch Trailer</div>
             </div>
+            <TrailerModal show={show} setShow={setShow} movie={movie} />
           </Col>
         </Row>
         {reviewBtn ? (
