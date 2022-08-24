@@ -3,10 +3,11 @@ import Modal from 'react-bootstrap/Modal';
 import YouTube from 'react-youtube';
 import './TrailerModal.scss';
 
-const TrailerModal = ({ show, setShow, movie }) => {
-  console.log('for movie trailer', movie);
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+const TrailerModal = ({ show, setShow, movie, video }) => {
   const opts = {
-    height: '660px',
+    height: '680px',
     width: '100%',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -30,7 +31,11 @@ const TrailerModal = ({ show, setShow, movie }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={_onReady} />
+          <YouTube
+            videoId={video?.results[1].key}
+            opts={opts}
+            onReady={_onReady}
+          />
         </Modal.Body>
       </Modal>
     </div>

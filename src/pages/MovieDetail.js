@@ -18,7 +18,10 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
+  const [video, setVideo] = useState(null);
   const [reviewBtn, setReviewBtn] = useState(true);
+
+  console.log('movieVideo', video);
 
   const [show, setShow] = useState(false);
 
@@ -29,8 +32,16 @@ const MovieDetail = () => {
       `/movie/${id}?api_key=${API_KEY}&language=en-US`
     );
 
-    let [detailMovie] = await Promise.all([detailMovieApi]);
+    const movieVideoApi = api.get(
+      `/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+    );
+
+    let [detailMovie, movieVideo] = await Promise.all([
+      detailMovieApi,
+      movieVideoApi,
+    ]);
     setMovie(detailMovie.data);
+    setVideo(movieVideo.data);
   };
 
   useEffect(() => {
@@ -107,7 +118,12 @@ const MovieDetail = () => {
               <RiMovie2Fill className="trailerIcon" />
               <div> Watch Trailer</div>
             </div>
-            <TrailerModal show={show} setShow={setShow} movie={movie} />
+            <TrailerModal
+              show={show}
+              setShow={setShow}
+              movie={movie}
+              video={video}
+            />
           </Col>
         </Row>
         {reviewBtn ? (
