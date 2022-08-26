@@ -1,0 +1,101 @@
+.cardCol1{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    
+
+    .moviesCard{
+        width: 100%;
+        transition: all 250ms ease-out;
+        cursor: pointer;
+
+        &::before{
+            position: absolute;
+            left: 100;
+            width: 120%;
+            height: 100%;
+            content: '';
+            background: linear-gradient(to right,black,transparent);
+        }
+
+        &:hover{
+            transform: scale(1.1);
+            z-index: 1;
+            box-shadow: rgba(255, 0, 0, 0.8) 10px 22px 70px 5px;
+        }
+
+        .innerOverlay{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 1rem;
+
+            .innerTitle{
+                display: flex;
+    
+                .moviesTitle{
+                    font-size: 2rem;
+                    font-weight: 800;
+                    margin-left: 1rem;
+                }
+    
+                .cardInnerPoster{
+                    width: 6rem;
+                    border-radius: 6px;
+                }
+            } 
+    
+            .innerReleaseDate{
+                font-size: 20px;
+                font-weight: 700;
+                margin: 1rem 0;
+                color: rgb(122, 161, 234);
+            }
+
+            .innerGenre{
+                margin-bottom: 1rem;
+
+                .genre{
+                    font-size: 1rem;
+                    margin: 5px 8px 5px 0;
+                }
+            }
+
+            .innerOverview{
+                width: 70%;
+                font-size: 0.8rem;
+            }
+
+            .innerAddInfo{
+                display: flex;
+                height: 100%;
+                align-items: flex-end;
+
+                .innerIcon{
+                    margin-right: 1rem;
+                    font-size: 1.3rem;
+
+                    .starIcon{
+                        font-size: 1.3rem;
+                        margin-bottom: 4px;
+                        margin-right: 4px;
+                        color: yellow;
+                    }
+
+                    .peopleIcon{
+                        font-size: 1.5rem;
+                        margin-bottom: 4px;
+                        margin-right: 4px;
+                        color: rgb(183, 95, 183);
+                    }
+
+                    .adultIcon{
+                        margin-bottom: 4px;
+                        margin-right: 4px;
+                        color: rgb(205, 2, 2);
+                    }
+                }
+            }
+        }
+    }
+}

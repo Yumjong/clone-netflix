@@ -1,0 +1,49 @@
+.movies{
+    background-color: black;
+
+    .moviesRow1{
+        padding: 120px 0;
+
+        .filterLine{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+
+            .sortBar{
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+                padding: 0.7rem ;
+                font-size: 1.5rem;
+                color: rgb(195, 195, 195);
+                border: 2px solid rgb(195, 195, 195);
+                border-radius: 10px;
+                cursor: pointer;
+
+                .upArrow{
+                    font-size: 2rem;
+                    margin-top: 5px;
+                }
+            }
+
+            .filterBar{
+                display: flex;
+                justify-content: space-between;
+                width: 90%;
+                padding: 0.7rem;
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                color: rgb(195, 195, 195);
+                border: 2px solid rgb(195, 195, 195);
+                border-radius: 10px;
+                cursor: pointer;
+
+                .upArrow{
+                    font-size: 2rem;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
