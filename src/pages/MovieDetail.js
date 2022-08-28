@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { Badge } from 'react-bootstrap';
 import api from '../redux/reducers/api';
 import './MovieDetail.scss';
