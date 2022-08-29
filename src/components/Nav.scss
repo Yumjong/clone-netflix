@@ -2,14 +2,24 @@
     position: fixed;
     width: 100%;
     z-index: 2;
-}
 
-.navItem{
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
+    .navItem{
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+    
+        &:hover{
+            color:red;
+        }
+    }
 
-    &:hover{
-        color:red;
+    .searchBox{
+        border-radius: 4px;
+        padding: 10px;
+
+        &:focus{
+            outline: none; 
+        }
     }
 }
+

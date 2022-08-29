@@ -1,5 +1,6 @@
 .movies{
     background-color: black;
+    min-height: 100vh;
 
     .moviesRow1{
         padding: 120px 0;
@@ -24,6 +25,39 @@
                 .upArrow{
                     font-size: 2rem;
                     margin-top: 5px;
+                }
+            }
+
+            .sortBarOpen{
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                padding: 0.7rem ;
+                font-size: 1.5rem;
+                color: rgb(195, 195, 195);
+                border: 2px solid rgb(195, 195, 195);
+                border-radius: 10px;
+                cursor: pointer;
+
+                .sortTrue{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    .upArrow{
+                        font-size: 2rem;
+                        margin-top: 5px;
+                    }
+                }
+
+                .barName{
+                    margin: 1rem;
+                    text-align: center;
+                }
+
+                .sortDrop{
+                    text-align: center;
+                    margin-bottom: 1rem;
                 }
             }
 

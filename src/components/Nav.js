@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,10 +9,27 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 const Navigation = () => {
+  const [searchWord, setSearchWord] = useState('');
   const navigate = useNavigate();
   const goHomeBtn = () => {
     navigate('/');
   };
+
+  let getKeyWord = (e) => {
+    let word = e.target.value;
+    setSearchWord(word);
+  };
+
+  let searchEnter = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/movies?query=${searchWord}`);
+    }
+  };
+
+  let searchBtn = () => {
+    navigate(`/movies?query=${searchWord}`);
+  };
+
   return (
     <div className="nav-bar">
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -39,15 +56,19 @@ const Navigation = () => {
                 Movies
               </Link>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
+            <div className="d-flex">
+              <input
+                type="text"
                 placeholder="Search"
-                className="me-2"
+                className="me-2 searchBox"
                 aria-label="Search"
+                onChange={(event) => getKeyWord(event)}
+                onKeyDown={(e) => searchEnter(e)}
               />
-              <Button variant="outline-danger">Search</Button>
-            </Form>
+              <Button variant="outline-danger" onClick={searchBtn}>
+                Search
+              </Button>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
