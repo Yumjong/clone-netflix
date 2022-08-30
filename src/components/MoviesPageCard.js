@@ -1,79 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-import { movieAction } from '../redux/reducers/actions/movieAction';
 import { useNavigate } from 'react-router';
-import { useSearchParams } from 'react-router-dom';
 
 import MoviesPagination from './MoviesPagination';
-
-import api from '../redux/reducers/api';
-
 import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 import { IoIosPeople } from '@react-icons/all-files/io/IoIosPeople';
 import { BsFillPersonCheckFill } from '@react-icons/all-files/bs/BsFillPersonCheckFill';
 import './MoviesPageCard.scss';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
-const MoviesPageCard = () => {
+const MoviesPageCard = ({
+  popularMovies,
+  genreList,
+  page,
+  setPage,
+  handlePageChange,
+}) => {
   const navigate = useNavigate();
-  const [popularMovies, setPopularMovies] = useState(null);
-  const [genreList, setGenreList] = useState(null);
-  const [query, setQuery] = useSearchParams();
 
-  const [page, setPage] = useState(1);
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
-
-  const getPopularMovies = async () => {
-    let searchQuery = query.get('query') || '';
-    console.log('쿼리값은?', searchQuery);
-
-    if (searchQuery !== '') {
-      const popularMoviesApi = api.get(
-        `/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
-      );
-
-      const genreListApi = api.get(
-        `/genre/movie/list?api_key=${API_KEY}&language=en-US`
-      );
-
-      let [popularMovies, genreList] = await Promise.all([
-        popularMoviesApi,
-        genreListApi,
-      ]);
-
-      setPopularMovies(popularMovies.data);
-      setGenreList(genreList.data);
-    } else if (searchQuery === '') {
-      const popularMoviesApi = api.get(
-        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`
-      );
-
-      const genreListApi = api.get(
-        `/genre/movie/list?api_key=${API_KEY}&language=en-US`
-      );
-
-      let [popularMovies, genreList] = await Promise.all([
-        popularMoviesApi,
-        genreListApi,
-      ]);
-
-      setPopularMovies(popularMovies.data);
-      setGenreList(genreList.data);
-    }
-  };
-
-  useEffect(() => {
-    getPopularMovies();
-  }, [page, query]);
-
-  console.log('popularMovies', popularMovies, genreList);
-
-  if (popularMovies && popularMovies.results.length === 0) {
+  if (popularMovies && popularMovies.length === 0) {
     return (
       <Row>
         <h1 className="noData">검색하는 영화를 찾지 못하였습니다.</h1>
@@ -81,9 +27,9 @@ const MoviesPageCard = () => {
     );
   }
   return (
-    <Row>
+    <Row className="moviesRow">
       {popularMovies &&
-        popularMovies.results?.map((item, i) => (
+        popularMovies?.map((item, i) => (
           <Col
             sm={6}
             className="cardCol1"

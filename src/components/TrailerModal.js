@@ -3,8 +3,6 @@ import Modal from 'react-bootstrap/Modal';
 import YouTube from 'react-youtube';
 import './TrailerModal.scss';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 const TrailerModal = ({ show, setShow, movie, video }) => {
   const opts = {
     height: '680px',
@@ -31,11 +29,15 @@ const TrailerModal = ({ show, setShow, movie, video }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <YouTube
-            videoId={video?.results[1].key}
-            opts={opts}
-            onReady={_onReady}
-          />
+          {video?.results[0] ? (
+            <YouTube
+              videoId={video?.results[0].key}
+              opts={opts}
+              onReady={_onReady}
+            />
+          ) : (
+            <div>관련영화의 예고편이 없습니다..</div>
+          )}
         </Modal.Body>
       </Modal>
     </div>

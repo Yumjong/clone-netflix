@@ -12,7 +12,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const RelatedMovie = ({ setReviewBtn }) => {
   const { genreList } = useSelector((state) => state.getMovie);
   const navigate = useNavigate();
-  console.log('adfasdf', genreList);
 
   const [related, setRelate] = useState();
   let { id } = useParams();
@@ -28,8 +27,6 @@ const RelatedMovie = ({ setReviewBtn }) => {
   useEffect(() => {
     getRelated();
   }, []);
-
-  console.log('related', related);
 
   const handleReviewBtn = () => {
     setReviewBtn(true);
