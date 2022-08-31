@@ -70,43 +70,11 @@ const Movies = () => {
 
   const popularitySort = async (e) => {
     let sortValue = e.target.value;
-    if (sortValue === 'popularity.desc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    } else if (sortValue === 'popularity.asc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    } else if (sortValue === 'release_date.desc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    } else if (sortValue === 'release_date.asc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    } else if (sortValue === 'vote_average.desc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    } else if (sortValue === 'vote_average.asc') {
-      const popularMoviesSortApi = api.get(
-        `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
-      );
-      let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
-      setPopularMovies(popularMovieSort.data.results);
-    }
+    const popularMoviesSortApi = api.get(
+      `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortValue}&include_adult=true&include_video=false&page=${page}`
+    );
+    let [popularMovieSort] = await Promise.all([popularMoviesSortApi]);
+    setPopularMovies(popularMovieSort.data.results);
   };
 
   return (
@@ -153,10 +121,10 @@ const Movies = () => {
                 </div>
               </div>
             )}
-            <div className="filterBar">
+            {/* <div className="filterBar">
               <span>Filter</span>
               <IoIosArrowDropup className="upArrow" />
-            </div>
+            </div> */}
           </Col>
           <Col sm={8} className="moviesCardLine">
             <MoviesPageCard
